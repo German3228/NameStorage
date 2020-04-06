@@ -71,17 +71,17 @@ public class UserController extends HttpServlet {
                 List<Book> listNewBooks = bookFacade.findNewBooks();
                 BookJsonBuilder bookJsonBuilder = new BookJsonBuilder();
                 JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
-                for(Book book : listNewBooks){
+                for (Book book : listNewBooks) {
                     arrayBuilder.add(bookJsonBuilder.createJsonObject(book));
                 }
                 JsonObjectBuilder jsonBooksBuilder = Json.createObjectBuilder();
                 jsonBooksBuilder.add("books", arrayBuilder);
-                try(Writer writer =new StringWriter()) {
-                  Json.createWriter(writer).write(jsonBooksBuilder.build());
-                  json = writer.toString(); 
+                try (Writer writer = new StringWriter()) {
+                    Json.createWriter(writer).write(jsonBooksBuilder.build());
+                    json = writer.toString();
                 }
                 break;
-                 case "/createBook":
+            case "/createBook":
                 String caption = request.getParameter("caption");
                 String author = request.getParameter("author");
                 String publishedYear = request.getParameter("publishedYear");
@@ -90,53 +90,48 @@ public class UserController extends HttpServlet {
                 String active = request.getParameter("active");
                 Integer year23 = new Integer(publishedYear);
                 Book book = new Book(
-                        caption, 
-                        author, 
+                        caption,
+                        author,
                         year23,
                         cover,
                         text
-                        );
+                );
                 bookFacade.create(book);
-//                Address address = new Address(
-//                        
-//                );
-//                addressFacade.create(entity);
                 request.getRequestDispatcher("/index.jsp")
                         .forward(request, response);
                 break;
-                
-                 case "/editUser":
+
+            case "/editUser":
                 String fname2 = request.getParameter("fname");
                 String lname2 = request.getParameter("lname");
                 String pnumber2 = request.getParameter("pnumber");
                 String login2 = request.getParameter("login");
                 String password2 = request.getParameter("password");
                 User userCheck = userFacade.findByLogin(login2);
-                if(!userCheck.getFname().equals(fname2)){
-                userCheck.setFname(fname2);
+                if (!userCheck.getFname().equals(fname2)) {
+                    userCheck.setFname(fname2);
                 }
-                if(!userCheck.getLname().equals(lname2)){
-                userCheck.setLname(lname2);
+                if (!userCheck.getLname().equals(lname2)) {
+                    userCheck.setLname(lname2);
                 }
-                if(!userCheck.getPnumber().equals(pnumber2)){
-                userCheck.setPnumber(pnumber2);
+                if (!userCheck.getPnumber().equals(pnumber2)) {
+                    userCheck.setPnumber(pnumber2);
                 }
-                if(!userCheck.getLogin().equals(login2)){
-                userCheck.setLogin(login2);
+                if (!userCheck.getLogin().equals(login2)) {
+                    userCheck.setLogin(login2);
                 }
-                if(!userCheck.getPassword().equals(password2)){
-                userCheck.setPassword(password2);
+                if (!userCheck.getPassword().equals(password2)) {
+                    userCheck.setPassword(password2);
                 }
                 userFacade.edit(userCheck);
-                request.setAttribute("info","<div class=\"alert alert-success\" role=\"alert\">\n" +
-                "Данные пользователя изменены!\n" +
-                "</div>");
+                request.setAttribute("info", "<div class=\"alert alert-success\" role=\"alert\">\n"
+                        + "Данные пользователя изменены!\n"
+                        + "</div>");
                 request.getRequestDispatcher("/redirect.jsp")
                         .forward(request, response);
-                 break;
+                break;
 
-                
-                 case "/createUser":
+            case "/createUser":
                 String fname = request.getParameter("fname");
                 String lname = request.getParameter("lname");
                 String pnumber = request.getParameter("pnumber");
@@ -144,64 +139,58 @@ public class UserController extends HttpServlet {
                 String password = request.getParameter("password");
                 String salts = request.getParameter("salts");
                 User user = new User(
-                        fname, 
-                        lname, 
+                        fname,
+                        lname,
                         pnumber,
                         login,
                         password,
                         salts,
                         true
-                        );
+                );
                 userFacade.create(user);
 
                 request.getRequestDispatcher("/index.jsp")
                         .forward(request, response);
                 break;
-                case "/logout":
-        Cookie cookie = new Cookie("user", "");
-        cookie.setMaxAge(0);
-        response.addCookie(cookie);
+            case "/logout":
+                Cookie cookie = new Cookie("user", "");
+                cookie.setMaxAge(0);
+                response.addCookie(cookie);
                 request.getRequestDispatcher("/redirect.jsp")
                         .forward(request, response);
                 break;
-                case "/authorizaton":
+            case "/authorizaton":
                 String login1 = request.getParameter("login");
                 String password1 = request.getParameter("password");
                 List<User> abc = userFacade.findAll();
-//                System.out.println(abc);
                 boolean checker = true;
                 List<String> users = new ArrayList<String>();
-                
-//                abc.forEach(element ->
-//                               users.add(element.getLogin())
-//                );
-                    for (int i = 0; i < abc.size(); i++) {
-                        User item = abc.get(i);
-                        String log = item.getLogin();
-                        String pass = item.getPassword();
-                        
-                        if(log.equals(login1)&&pass.equals(password1)){
-                        users.add(item.getFname()+":"+item.getLname()+":"+item.getPnumber()+":"+item.getLogin()+":"+item.getPassword());
+                for (int i = 0; i < abc.size(); i++) {
+                    User item = abc.get(i);
+                    String log = item.getLogin();
+                    String pass = item.getPassword();
+
+                    if (log.equals(login1) && pass.equals(password1)) {
+                        users.add(item.getFname() + ":" + item.getLname() + ":" + item.getPnumber() + ":" + item.getLogin() + ":" + item.getPassword());
                         System.out.println("YEP");
-                        }
                     }
-                    
-                if(users.size()!=0){
-                Cookie loginCookie = new Cookie("user",users.get(0));
-			//setting cookie to expiry in 30 mins
-			loginCookie.setMaxAge(30*60);
-			response.addCookie(loginCookie);
-			request.getRequestDispatcher("/redirect.jsp")
-                        .forward(request, response);
-                        break;
                 }
-                request.setAttribute("info","<div class=\"alert alert-danger\" role=\"alert\">\n" +
-                "Неверный логин или пароль!!\n" +
-                "</div>");
+
+                if (users.size() != 0) {
+                    Cookie loginCookie = new Cookie("user", users.get(0));
+                    loginCookie.setMaxAge(30 * 60);
+                    response.addCookie(loginCookie);
+                    request.getRequestDispatcher("/redirect.jsp")
+                            .forward(request, response);
+                    break;
+                }
+                request.setAttribute("info", "<div class=\"alert alert-danger\" role=\"alert\">\n"
+                        + "Неверный логин или пароль!!\n"
+                        + "</div>");
                 request.getRequestDispatcher("/index.jsp")
                         .forward(request, response);
                 break;
-                
+
         }
         
         try (PrintWriter out = response.getWriter()) {

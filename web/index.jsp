@@ -5,7 +5,7 @@
 
         <div class="carousel-inner">
             <div class="carousel-item active" id="authHide" style="padding:9%;">
-                
+
                 <form class="form" action="authorizaton" id="formHide" method="POST" autocomplete="off">
                     <div class="form-inner">
                         <h2>User Login</h2>
@@ -36,36 +36,36 @@
                         </div>
                     </div>
                 </form>
-<%
-    if(check==true){
-        out.println("<script>document.getElementById('formHide').style.display = 'none';</script>");
-        out.println("<form action='logout' method='POST'><li class='nav-item my-2 my-lg-0' id='space4'><button type='submit' class='btn btn-outline-light'>Logout</button></li></form>");}
-    };
-%>
-<br>
-<form action="editUser" method="POST" class='form-group' style="width:30%" id="userChange">
-  <div class='form-group'>
-    <input type='text' name="fname" class='form-control' id='inputPassword2' placeholder='First name' value="<%out.println(array[0]);%>">
-  </div>
-  <div class='form-group'>
-    <input type='text' name="lname" class='form-control' id='inputPassword2' placeholder='Last name' value="<%out.println(array[1]);%>">
-  </div>
-  <div class='form-group'>
-    <input type='text' name="pnumber" class='form-control' id='inputPassword2' placeholder='Phone number' value="<%out.println(array[2]);%>">
-  </div>
-  <div class='form-group'>
-    <input type='text' name="login" class='form-control' id='inputPassword2' placeholder='Login' value="<%out.println(array[3]);%>">
-  </div>
-  <div class='form-group'>
-    <input type='password' name="password" class='form-control' id='inputPassword2' placeholder='Password' value="<%out.println(array[4]);%>">
-  </div>
-  <button type='submit' class='btn btn-primary mb-2'>Change info</button>
-</form>
-<% 
-    if(check==false){
-    out.println("<script>document.getElementById('userChange').style.display = 'none';</script>");
-    };
-    %>
+                <%        if (check == true) {
+                            out.println("<script>document.getElementById('formHide').style.display = 'none';</script>");
+                            out.println("<form action='logout' method='POST'><li class='nav-item my-2 my-lg-0' id='space4'><button type='submit' class='btn btn-outline-light'>Logout</button></li></form>");
+                        }
+                    };
+                %>
+                <br>
+                <form action="editUser" method="POST" class='form-group' style="width:30%" id="userChange">
+                    <div class='form-group'>
+                        <input type='text' name="fname" class='form-control' id='inputPassword2' placeholder='First name' value="<%out.println(array[0]);%>">
+                    </div>
+                    <div class='form-group'>
+                        <input type='text' name="lname" class='form-control' id='inputPassword2' placeholder='Last name' value="<%out.println(array[1]);%>">
+                    </div>
+                    <div class='form-group'>
+                        <input type='text' name="pnumber" class='form-control' id='inputPassword2' placeholder='Phone number' value="<%out.println(array[2]);%>">
+                    </div>
+                    <div class='form-group'>
+                        <input type='text' name="login" class='form-control' id='inputPassword2' placeholder='Login' value="<%out.println(array[3]);%>">
+                    </div>
+                    <div class='form-group'>
+                        <input type='password' name="password" class='form-control' id='inputPassword2' placeholder='Password' value="<%out.println(array[4]);%>">
+                    </div>
+                    <button type='submit' class='btn btn-primary mb-2'>Change info</button>
+                </form>
+                <%
+                    if (check == false) {
+                        out.println("<script>document.getElementById('userChange').style.display = 'none';</script>");
+                    };
+                %>
             </div>
             <div class="carousel-item">
                 <center>
