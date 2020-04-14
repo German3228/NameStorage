@@ -81,7 +81,7 @@ public class UserController extends HttpServlet {
                     json = writer.toString();
                 }
                 break;
-            case "/createBook":
+            case "/createBook": //
                 String caption = request.getParameter("caption");
                 String author = request.getParameter("author");
                 String publishedYear = request.getParameter("publishedYear");
@@ -101,7 +101,7 @@ public class UserController extends HttpServlet {
                         .forward(request, response);
                 break;
 
-            case "/editUser":
+            case "/editUser": // Изменение пользователя
                 String fname2 = request.getParameter("fname");
                 String lname2 = request.getParameter("lname");
                 String pnumber2 = request.getParameter("pnumber");
@@ -131,7 +131,7 @@ public class UserController extends HttpServlet {
                         .forward(request, response);
                 break;
 
-            case "/createUser":
+            case "/createUser": // Регистрация
                 String fname = request.getParameter("fname");
                 String lname = request.getParameter("lname");
                 String pnumber = request.getParameter("pnumber");
@@ -152,14 +152,14 @@ public class UserController extends HttpServlet {
                 request.getRequestDispatcher("/index.jsp")
                         .forward(request, response);
                 break;
-            case "/logout":
+            case "/logout": // Выход
                 Cookie cookie = new Cookie("user", "");
                 cookie.setMaxAge(0);
                 response.addCookie(cookie);
                 request.getRequestDispatcher("/redirect.jsp")
                         .forward(request, response);
                 break;
-            case "/authorizaton":
+            case "/authorizaton": // Авторизация
                 String login1 = request.getParameter("login");
                 String password1 = request.getParameter("password");
                 List<User> abc = userFacade.findAll();
