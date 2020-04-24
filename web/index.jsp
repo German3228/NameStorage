@@ -82,41 +82,6 @@
                 </center>    
             </div>
             <div class="carousel-item">
-
-                <div class="block" style="width:30%;color:white;">
-                    <h3>Add Customer</h3>
-                    <form action="createCustomer" method="POST">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1" id="white">firstname</label>
-                            <input type="text" name="firstname" placeholder="Text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1" id="white">lastname</label>
-                            <input type="text" name="lastname" placeholder="Text" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1" id="white">day</label>
-                            <input type="text" name="day" placeholder="Int" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1" id="white">month</label>
-                            <input type="text" name="month" placeholder="Int" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1" id="white">year2</label>
-                            <input type="text" name="year2" placeholder="Text" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1" id="white">address</label>
-                            <input type="text" name="address" placeholder="Text" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1" id="white">phone</label>
-                            <input type="text" name="phone" placeholder="Text" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
                 <div class="block" style="width:30%;color:white;">
                     <h3>Add Book</h3>
                     <form action="createBook" method="POST">
@@ -137,7 +102,7 @@
                             <input type="text" name="cover" placeholder="Text" class="form-control" id="exampleInputPassword1">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1" id="white">text</label>
+                            <label for="exampleInputPassword1" id="white">Img URL</label>
                             <input type="text" name="text" placeholder="Text" class="form-control" id="exampleInputPassword1">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

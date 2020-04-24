@@ -37,11 +37,12 @@ function json(response) {
   return response.json();
 };
 function printListNewBooks(data){
-    let content = document.getElementById('content');
+    let content = document.getElementById('customercontent');
     let cards = '';
     for(let i = 0; i < data.books.length; i++){
         cards +=
         `<div class="card w-25" >
+             <img src="${data.books[i].text}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${data.books[i].caption}</h5>
                 <p class="card-text">${data.books[i].author}. ${data.books[i].publishedYear}</p>
@@ -52,7 +53,7 @@ function printListNewBooks(data){
     content.innerHTML = cards;
 }
 function printListCustomers(data){
-    let content = document.getElementById('customercontent');
+    let content = document.getElementById('content');
     let cards = '';
         let listAddress = '';
         for(let i=0;i<6;i++){

@@ -37,11 +37,11 @@
       <li class="nav-item" id="space1">
         <button type="button" onclick="slide(0)" class="btn btn-outline-light">Authorization</button>
       </li>
-      <li class="nav-item" id="space2">
+      <li class="nav-item" id="space3">
         <button type="button" onclick="slide(0)" class="btn btn-outline-light">User</button>
       </li>
-      <li class="nav-item" id="space3">
-        <button type="button" onclick="slide(2)" class="btn btn-outline-light">List Customer</button>
+      <li class="nav-item" id="space2">
+        <button type="button" onclick="slide(2)" class="btn btn-outline-light">Books</button>
       </li>
       <li class="nav-item" id="space4">
         <button type="button" onclick="slide(3)" class="btn btn-outline-light">Add</button>
